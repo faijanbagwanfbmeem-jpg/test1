@@ -1,8 +1,7 @@
-"use client"; // if you are using app/ router in Next.js 13+
+"use client";
 
-import React, { useState } from "react";
-import styles from "./contact.module.css";
-
+import { useState } from 'react';
+import './contact.css'; 
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,58 +13,63 @@ export default function Contact() {
     address: "",
   });
 
-  const handleChange = (e) => {
+  function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    alert("Student Registered Successfully!\n" + JSON.stringify(formData, null, 2));
-  };
+    alert("Registered!\n" + JSON.stringify(formData, null, 2));
+  }
 
   return (
-    <div className="contact-container">
-      <h2>Student Registration Form</h2>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Full Name</label>
-          <input type="text" name="name" placeholder="Enter full name" value={formData.name} onChange={handleChange} required />
-        </div>
+    <>
+      {/* Navbar */}
+      <header className="header">
+        <nav className="navbar">
+          <a className="Logo" href="/">EduTech</a>
+          <ul className="navmenu">
+            <li className="navitem">
+              <a className="navlink" href="#">Home</a>
+            </li>
+            <li className="navitem">
+              <a className="navlink" href="#">About</a>
+            </li>
+            <li className="navitem">
+              <a className="navlink" href="#">Contact</a>
+            </li>
+          </ul>
+          <button className="hamburger">
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+        </nav>
+      </header>
 
-        <div className="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="Enter email" value={formData.email} onChange={handleChange} required />
-        </div>
+      {/* Registration Form */}
+      <div className="container">
+        <center>
+          <h2>Register Now</h2>
+        </center>
 
-        <div className="form-group">
-          <label>Phone Number</label>
-          <input type="tel" name="phone" placeholder="Enter phone number" value={formData.phone} onChange={handleChange} required />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="name" placeholder="Full Name" onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+          <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} required />
+          <input type="date" name="dob" onChange={handleChange} required />
 
-        <div className="form-group">
-          <label>Date of Birth</label>
-          <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
-        </div>
-
-        <div className="form-group">
-          <label>Course</label>
-          <select name="course" value={formData.course} onChange={handleChange} required>
-            <option value="">-- Select Course --</option>
-            <option value="B.Tech">B.Tech</option>
+          <select name="course" onChange={handleChange} required>
+            <option value="">Select Course</option>
+            <option value="BCA">BCA</option>
             <option value="B.Sc">B.Sc</option>
-            <option value="B.Com">B.Com</option>
-            <option value="MBA">MBA</option>
-            <option value="Other">Other</option>
+            <option value="MCA">MCA</option>
           </select>
-        </div>
 
-        <div className="form-group">
-          <label>Address</label>
-          <textarea name="address" placeholder="Enter address" value={formData.address} onChange={handleChange} required></textarea>
-        </div>
-
-        <button type="submit" className="submit-btn">Register</button>
-      </form>
-    </div>
+          <textarea name="address" placeholder="Address" onChange={handleChange} required />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </>
   );
 }
