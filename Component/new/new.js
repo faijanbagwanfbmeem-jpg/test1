@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import './contact.css'; 
+import './new.css'; 
+import Link from 'next/link';
 
-export default function Contact() {
+export default function New() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,13 +31,13 @@ export default function Contact() {
           <a className="Logo" href="/">EduTech</a>
           <ul className="navmenu">
             <li className="navitem">
-              <a className="navlink" href="#">Home</a>
+             <Link href="/home" className="navlink">Home</Link>
             </li>
             <li className="navitem">
-              <a className="navlink" href="#">About</a>
+             <Link href="/about" className="navlink">About</Link>
             </li>
             <li className="navitem">
-              <a className="navlink" href="#">Contact</a>
+             <Link href="/contact" className="navlink">Contact</Link>
             </li>
           </ul>
           <button className="hamburger">
