@@ -1,0 +1,38 @@
+/* Pop page sliding in from the right side */
+.pop-page {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+/* When active, slide in */
+.pop-page.active {
+    transform: translateX(0);
+}
+
+/* Optional: overlay background */
+.pop-page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.pop-page-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
